@@ -51,7 +51,7 @@ except:
     device = product
 
 if not depsonly:
-    print "Device %s not found. Attempting to retrieve device repository from MROM Github (http://github.com/MROM)." % device
+    print("Device %s not found. Attempting to retrieve device repository from MROM Github (http://github.com/MROM)." % device)
 
 repositories = []
 
@@ -159,10 +159,10 @@ def add_to_manifest(repositories, fallback_branch = None):
         repo_name = repository['repository']
         repo_target = repository['target_path']
         if exists_in_tree(lm, repo_name):
-            print 'MROM/%s already exists' % (repo_name)
+            print("MROM/%s already exists" % (repo_name))
             continue
 
-        print 'Adding dependency: MROM/%s -> %s' % (repo_name, repo_target)
+        print("Adding dependency: MROM/%s -> %s" % (repo_name, repo_target))
         project = ElementTree.Element("project", attrib = { "path": repo_target,
             "remote": "github", "name": "MROM/%s" % repo_name })
 
@@ -275,4 +275,4 @@ else:
             print("Done")
             sys.exit()
 
-print "Repository for %s not found in the MROM Github repository list. If this is in error, you may need to manually add it to your local_manifests/roomservice.xml." % device
+print("Repository for %s not found in the MROM Github repository list. If this is in error, you may need to manually add it to your local_manifests/roomservice.xml." % device)
